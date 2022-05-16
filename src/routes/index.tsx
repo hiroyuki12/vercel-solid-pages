@@ -1,11 +1,14 @@
 import Counter from "~/components/Counter";
+import CounterPage from "~/components/CounterPage";
 import "./index.css";
+import { Router, Routes, Route, Link } from "solid-app-router";
 
 export default function Home() {
   return (
     <main>
       <h1>Hello world!</h1>
       <Counter />
+      <CounterPage />
       <p>
         Visit{" "}
         <a href="https://solidjs.com" target="_blank">
