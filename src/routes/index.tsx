@@ -1,7 +1,6 @@
 import Counter from "~/components/Counter";
 import CounterPage from "~/components/CounterPage";
 import "./index.css";
-import { Router, Routes, Route, Link } from "solid-app-router";
 
 export default function Home() {
   return (
