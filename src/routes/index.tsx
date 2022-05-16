@@ -13,6 +13,11 @@ export default function Home() {
         </a>{" "}
         to learn how to build Solid apps.
       </p>
+      <p>
+        <a href="https://mbp.hatenablog.com/entry/2022/05/16/213132" target="_blank">
+          環境構築 
+        </a>
+      </p>
     </main>
   );
 }
