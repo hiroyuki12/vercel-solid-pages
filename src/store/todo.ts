@@ -1,6 +1,6 @@
 import { createStore } from "solid-js/store";
 import { onMount } from "solid-js";
-import { ulid } from "ulid";
+//import { ulid } from "ulid";
 
 export type Todo = {
   id: string;
@@ -20,7 +20,7 @@ export const useTodo = () => {
   const addTodo = (text: string) => {
     setState("todos", (todos) => [
       ...todos,
-      { id: ulid(), text, completed: false },
+      //{ id: ulid(), text, completed: false },
     ]);
   };
 

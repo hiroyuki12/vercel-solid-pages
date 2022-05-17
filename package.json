@@ -18,7 +18,6 @@
     "node": "16.x"
   },
   "dependencies": {
-    "moment": "^2.29.3",
-    "ulid": "^2.3.0"
+    "moment": "^2.29.3"
   }
 }
