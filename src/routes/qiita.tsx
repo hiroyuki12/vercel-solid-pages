@@ -29,7 +29,7 @@ const CatsPage: Component = () => {
           <For each={data()}>
             {(qiita) => (
               <li>
-                  ${qiita.title}
+                  <a href={qiita.url}>{qiita.title}</a>
               </li>
             )}
           </For>
