@@ -2,6 +2,7 @@ import type { Component } from "solid-js";
 import { createResource, For, createSignal, Suspense } from "solid-js";
 import { Cat } from "../types";
 import { Qiita } from "../qiita-types";
+import moment from "moment";
 
 const fetchData = async (skip: number) =>
   (await fetch(`https://qiita.com/api/v2/tags/react/items`)).json();
@@ -29,7 +30,7 @@ const CatsPage: Component = () => {
           <For each={data()}>
             {(qiita) => (
               <li>
-                  <a href={qiita.url}>{qiita.title}</a>
+                  <a href={qiita.url}>{qiita.title}</a> {moment(qiita.created_at).fromNow()}
               </li>
             )}
           </For>
