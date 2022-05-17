@@ -39,7 +39,7 @@ const CatsPage: Component = () => {
             {(qiita) => (
               <li>
                   <img src={qiita.user.profile_image_url} width="50" height="50" loading="lazy" />
-                  <a className="QiitaApp-link" href={qiita.url}>{qiita.title}</a> {moment(qiita.created_at).fromNow()}
+                  <a className="QiitaApp-link" href={qiita.url} target="_blank">{qiita.title}</a> {moment(qiita.created_at).fromNow()}
               </li>
             )}
           </For>
