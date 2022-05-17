@@ -19,6 +19,21 @@ export default function Home() {
           環境構築 
         </a>
       </p>
+      <p>
+        <a href="qiita">
+           Qiita(API)
+        </a>
+      </p>
+      <p>
+        <a href="todo">
+           TODO PAGE
+        </a>
+      </p>
+      <p>
+        <a href="cats">
+           CATS PAGE
+        </a>
+      </p>
     </main>
   );
 }
