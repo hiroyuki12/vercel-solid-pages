@@ -16,5 +16,8 @@
   },
   "engines": {
     "node": "16.x"
+  },
+  "dependencies": {
+    "ulid": "^2.3.0"
   }
 }
