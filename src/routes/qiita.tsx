@@ -24,6 +24,12 @@ const CatsPage: Component = () => {
     <>
     <header className="QiitaApp-header">
       <h1>Qiita Page</h1>
+      <p>
+        <a className="QiitaApp-link" href="https://mbp.hatenablog.com/entry/2022/05/16/221120" target="_blank">VercelでSolidJS</a>
+      </p>
+      <p>
+        <a className="QiitaApp-link" href="https://mbp.hatenablog.com/entry/2021/07/15/214300" target="_blank">ReactでQiita APIから記事情報を取得して表示</a>
+      </p>
       <input type="number" placeholder="Enter Skip Number" ref={input} />
       <button onClick={() => onSetSkip()}>set skip</button>
       <button onClick={() => refetch()}>refetch</button>
