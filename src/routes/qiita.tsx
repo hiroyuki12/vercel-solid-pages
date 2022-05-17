@@ -3,6 +3,7 @@ import { createResource, For, createSignal, Suspense } from "solid-js";
 import { Cat } from "../types";
 import { Qiita } from "../qiita-types";
 import moment from "moment";
+import "./QiitaApp.css";
 
 const fetchData = async (skip: number) =>
   (await fetch(`https://qiita.com/api/v2/tags/react/items`)).json();
@@ -21,6 +22,7 @@ const CatsPage: Component = () => {
 
   return (
     <>
+    <header className="QiitaApp-header">
       <h1>Qiita Page</h1>
       <input type="number" placeholder="Enter Skip Number" ref={input} />
       <button onClick={() => onSetSkip()}>set skip</button>
@@ -30,12 +32,14 @@ const CatsPage: Component = () => {
           <For each={data()}>
             {(qiita) => (
               <li>
-                  <a href={qiita.url}>{qiita.title}</a> {moment(qiita.created_at).fromNow()}
+                  <img src={qiita.user.profile_image_url} width="50" height="50" loading="lazy" />
+                  <a className="QiitaApp-link" href={qiita.url}>{qiita.title}</a> {moment(qiita.created_at).fromNow()}
               </li>
             )}
           </For>
         </ul>
       </Suspense>
+    </header>
     </>
   );
 };
