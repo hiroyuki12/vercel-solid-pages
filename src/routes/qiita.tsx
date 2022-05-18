@@ -1,6 +1,7 @@
 import type { Component } from "solid-js";
-import { createResource, For, createSignal, Suspense } from "solid-js";
+import { createResource, For, createSignal, Suspense, createEffect } from "solid-js";
 import { Qiita } from "../qiita-types";
+import lodash from "lodash";
 import moment from "moment";
 import "./QiitaApp.css";
 
@@ -10,6 +11,30 @@ const fetchData = async(page: number) =>
 const QiitaPage: Component = () => {
   const [page, setPage] = createSignal(1);
   const [data, { refetch }] = createResource<Qiita[], number>(page, fetchData);
+
+  // 一番下に到達したら 次ページに更新
+  const handleScroll = lodash.throttle(() => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+      document.documentElement.offsetHeight
+    ) {
+      return;
+    }
+
+    // 一番下に到達した時の処理
+    //if(message !== "loading...") {
+      setPage((prevCount) => prevCount + 1);
+    //}
+
+  }, 500);
+
+  createEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   let input!: HTMLInputElement;
 
