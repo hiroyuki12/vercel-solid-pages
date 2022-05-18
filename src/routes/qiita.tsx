@@ -4,19 +4,19 @@ import { Qiita } from "../qiita-types";
 import moment from "moment";
 import "./QiitaApp.css";
 
-const fetchData = async (skip: number) =>
-  (await fetch(`https://qiita.com/api/v2/tags/react/items?page=${skip}`)).json();
+const fetchData = async(page: number) =>
+  (await fetch(`https://qiita.com/api/v2/tags/react/items?page=${page}`)).json();
 
 const QiitaPage: Component = () => {
-  const [skip, setSkip] = createSignal(1);
-  const [data, { refetch }] = createResource<Qiita[], number>(skip, fetchData);
+  const [page, setPage] = createSignal(1);
+  const [data, { refetch }] = createResource<Qiita[], number>(page, fetchData);
 
   let input!: HTMLInputElement;
 
   const onSetSkip = () => {
     if (!input.value.trim()) return;
     if (isNaN(Number(input.value))) return;
-    setSkip(Number(input.value));
+    setPage(Number(input.value));
   };
 
   return (
