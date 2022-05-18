@@ -1,6 +1,5 @@
 import type { Component } from "solid-js";
 import { createResource, For, createSignal, Suspense } from "solid-js";
-import { Cat } from "../types";
 import { Qiita } from "../qiita-types";
 import moment from "moment";
 import "./QiitaApp.css";
@@ -8,7 +7,7 @@ import "./QiitaApp.css";
 const fetchData = async (skip: number) =>
   (await fetch(`https://qiita.com/api/v2/tags/react/items?page=${skip}`)).json();
 
-const CatsPage: Component = () => {
+const QiitaPage: Component = () => {
   const [skip, setSkip] = createSignal(1);
   const [data, { refetch }] = createResource<Qiita[], number>(skip, fetchData);
 
@@ -50,4 +49,4 @@ const CatsPage: Component = () => {
   );
 };
 
-export default CatsPage;
+export default QiitaPage;
