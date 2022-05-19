@@ -9,7 +9,9 @@ const fetchData = async(page: number) =>
   (await fetch(`https://qiita.com/api/v2/tags/react/items?page=${page}`)).json();
 
 const QiitaPage: Component = () => {
+  const [postsList, setPostsList] = createSignal([]);
   const [page, setPage] = createSignal(1);
+  const [tag, setTag] = createSignal("react");
   const [data, { refetch }] = createResource<Qiita[], number>(page, fetchData);
 
   // 一番下に到達したら 次ページに更新
@@ -35,6 +37,11 @@ const QiitaPage: Component = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleClick = () => {
+    const limit = 40;
+    fetch
+  }
 
   let input!: HTMLInputElement;
 
@@ -65,7 +72,9 @@ const QiitaPage: Component = () => {
       <button onClick={() => onNextPage()}>next page</button>
       <button onClick={() => onPrevPage()}>prev page</button>
       <button onClick={() => refetch()}>refetch</button>
-      page: {page}
+      page: {page},
+      tag: {tag}
+
       <Suspense fallback={<div>Loading...</div>}>
         <ul>
           <For each={data()}>
