@@ -73,7 +73,9 @@ const QiitaPage: Component = () => {
       <button onClick={() => onPrevPage()}>prev page</button>
       <button onClick={() => refetch()}>refetch</button>
       page: {page},
-      tag: {tag}
+      tag: {tag},
+      {data.loading && "Loading..."}
+      {data.error && "error"}
 
       <Suspense fallback={<div>Loading...</div>}>
         <ul>
