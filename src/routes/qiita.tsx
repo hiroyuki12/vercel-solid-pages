@@ -14,6 +14,10 @@ const QiitaPage: Component = () => {
   const [tag, setTag] = createSignal("react");
   const [data, { refetch }] = createResource<Qiita[], number>(page, fetchData);
 
+  createEffect(() => {
+    document.title = `The current count is: ${page()}`;
+  });
+
   // 一番下に到達したら 次ページに更新
   const handleScroll = lodash.throttle(() => {
     if (
