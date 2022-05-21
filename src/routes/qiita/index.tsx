@@ -1,6 +1,6 @@
 import type { Component } from "solid-js";
 import { createResource, For, createSignal, Suspense, createEffect } from "solid-js";
-import { Qiita } from "../qiita-types";
+import { Qiita } from "./qiita-types";
 import lodash from "lodash";
 import moment from "moment";
 import "./QiitaApp.css";
@@ -15,7 +15,7 @@ const QiitaPage: Component = () => {
   const [data, { refetch }] = createResource<Qiita[], number>(page, fetchData);
 
   createEffect(() => {
-    document.title = `The current count is: ${page()}`;
+    //document.title = `The current count is: ${page}`;
   });
 
   // 一番下に到達したら 次ページに更新
@@ -77,6 +77,7 @@ const QiitaPage: Component = () => {
       <button onClick={() => onPrevPage()}>prev page</button>
       <button onClick={() => refetch()}>refetch</button>
       page: {page},
+      page: {page()},
       tag: {tag},
       {data.loading && "Loading..."}
       {data.error && "error"}

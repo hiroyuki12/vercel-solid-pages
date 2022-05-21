@@ -1,4 +1,4 @@
-import Counter from "~/components/Counter";
+import Counter from "~/components/counter/Counter";
 import CounterPage from "~/components/CounterPage";
 import "./index.css";
 
@@ -26,7 +26,7 @@ export default function Home() {
       </p>
       <p>
         <a href="qiita">
-           Qiita(API)
+           Qiita Page(API)
         </a>
       </p>
       <p>
@@ -37,6 +37,11 @@ export default function Home() {
       <p>
         <a href="cats">
            CATS PAGE
+        </a>
+      </p>
+      <p>
+        <a href="counter">
+           COUNTER PAGE
         </a>
       </p>
     </main>

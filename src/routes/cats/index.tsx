@@ -1,9 +1,9 @@
 import type { Component } from "solid-js";
 import { createResource, For, createSignal, Suspense } from "solid-js";
-import { Cat } from "../types";
+import { Cat } from "./types";
 
 const fetchData = async (skip: number) =>
-  (await fetch(`https://cataas.com/api/cats?skip=${skip}&limit=10`)).json();
+  (await fetch(`https://cataas.com/api/cats?skip=${skip}&limit=3`)).json();
 
 const CatsPage: Component = () => {
   const [skip, setSkip] = createSignal(0);
@@ -18,7 +18,7 @@ const CatsPage: Component = () => {
   };
 
   return (
-    <>
+    <main>
       <h1>Cats Page</h1>
       <input type="number" placeholder="Enter Skip Number" ref={input} />
       <button onClick={() => onSetSkip()}>set skip</button>
@@ -37,7 +37,7 @@ const CatsPage: Component = () => {
           </For>
         </ul>
       </Suspense>
-    </>
+    </main>
   );
 };
 

@@ -1,7 +1,7 @@
 import type { Component } from "solid-js";
 import { createSignal, createEffect } from "solid-js";
 
-const CounterPage: Component = () => {
+const Counter2: Component = () => {
   const [count, setCount] = createSignal(0);
   createEffect(() => {
     console.log("count is", count());
@@ -14,4 +14,4 @@ const CounterPage: Component = () => {
   );
 };
 
-export default CounterPage;
+export default Counter2;
