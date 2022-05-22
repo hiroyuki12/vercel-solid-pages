@@ -53,7 +53,26 @@ const QiitaPage: Component = () => {
 
   const handleClick = () => {
     const limit = 40;
-    fetch
+    const url = `https://qiita.com/api/v2/tags/${tag}/items?page=${page}&per_page=${limit}`;
+    //const url = `https://qiita.com/api/v2/tags/react/items`;
+
+    const headers = {}
+    fetch(url, { headers })
+      .then(res =>
+        res.json().then(data => ({
+          ok: res.ok,
+          data,
+        }))
+      )
+      .then(res => {
+        if (!res.ok) {
+          setError(res.data.message);  // Rate limit exceeded
+          //throw Error(res.data.message)
+        } else {
+	  setError("res.ok");
+          //setPostsList(postsList.concat(res.data));
+        }
+      })
   }
 
   let input!: HTMLInputElement;
@@ -62,7 +81,8 @@ const QiitaPage: Component = () => {
     //if (!input.value.trim()) return;
     //if (isNaN(Number(input.value))) return;
     //setPage(Number(input.value));
-    setPage((prevCount) => prevCount + 1);
+    //setPage((prevCount) => prevCount + 1);
+    handleClick();
   };
   const onPrevPage= () => {
     //if (!input.value.trim()) return;
