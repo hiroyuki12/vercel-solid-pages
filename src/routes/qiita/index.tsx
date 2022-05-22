@@ -7,15 +7,24 @@ import "./QiitaApp.css";
 
 const fetchData = async(page: number) =>
   (await fetch(`https://qiita.com/api/v2/tags/react/items?page=${page}`)).json();
+const fetchData2 = async(tag: string) =>
+  (await fetch(`https://qiita.com/api/v2/tags/${tag}/items?page=1`)).json();
 
 const QiitaPage: Component = () => {
   const [postsList, setPostsList] = createSignal([]);
   const [page, setPage] = createSignal(1);
   const [tag, setTag] = createSignal("react");
+  const [error, setError] = createSignal("");
   const [data, { refetch }] = createResource<Qiita[], number>(page, fetchData);
+  const [data2, { refetch2 }] = createResource<Qiita[], string>(tag, fetchData2);
 
   createEffect(() => {
-    //document.title = `The current count is: ${page}`;
+    if(data() == null) {
+      setError("Probably Rate limit exceeded");
+    }
+    else {
+      setError("");
+    }
   });
 
   // 一番下に到達したら 次ページに更新
@@ -61,10 +70,17 @@ const QiitaPage: Component = () => {
     //setPage(Number(input.value));
     setPage((prevCount) => prevCount - 1);
   };
+  const onTagSwift= () => {
+    setTag("swift");
+  };
+  const onTagReact= () => {
+    setTag("react");
+  };
 
   return (
     <>
     <header className="QiitaApp-header">
+      <font color="red"><b>{error}</b></font>
       <h1>Qiita Page</h1>
       <p>
         <a className="QiitaApp-link" href="https://mbp.hatenablog.com/entry/2022/05/16/221120" target="_blank">VercelでSolidJS</a>
@@ -77,7 +93,6 @@ const QiitaPage: Component = () => {
       <button onClick={() => onPrevPage()}>prev page</button>
       <button onClick={() => refetch()}>refetch</button>
       page: {page},
-      page: {page()},
       tag: {tag},
       {data.loading && "Loading..."}
       {data.error && "error"}
