@@ -20,7 +20,8 @@ const QiitaPage: Component = () => {
 
   createEffect(() => {
     if(data() == null) {
-      setError("Probably Rate limit exceeded");
+      //setError("Probably Rate limit exceeded");
+      handleClick();
     }
     else {
       setError("");
@@ -52,9 +53,10 @@ const QiitaPage: Component = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleClick = () => {
-    const limit = 40;
-    const url = `https://qiita.com/api/v2/tags/${tag}/items?page=${page}&per_page=${limit}`;
-    //const url = `https://qiita.com/api/v2/tags/react/items`;
+    const limit = 10;
+    //const url = `https://qiita.com/api/v2/tags/${tag}/items?page=${page}&per_page=${limit}`;
+    const url = `https://qiita.com/api/v2/tags/react/items`;
+    //document.title = `page: ${page()}, tag: ${tag()}`;
 
     const headers = {}
     fetch(url, { headers })
@@ -69,7 +71,8 @@ const QiitaPage: Component = () => {
           setError(res.data.message);  // Rate limit exceeded
           //throw Error(res.data.message)
         } else {
-	  setError("res.ok");
+          //document.title = `res.ok`;
+	  //todo
           //setPostsList(postsList.concat(res.data));
         }
       })
@@ -81,13 +84,17 @@ const QiitaPage: Component = () => {
     //if (!input.value.trim()) return;
     //if (isNaN(Number(input.value))) return;
     //setPage(Number(input.value));
-    //setPage((prevCount) => prevCount + 1);
-    handleClick();
+    setPage((prevCount) => prevCount + 1);
+    //handleClick();
   };
   const onPrevPage= () => {
+    //document.title = `${page()}`;
     //if (!input.value.trim()) return;
     //if (isNaN(Number(input.value))) return;
     //setPage(Number(input.value));
+    /*if($page() < 2) {
+      return;
+    }*/
     setPage((prevCount) => prevCount - 1);
   };
   const onTagSwift= () => {
