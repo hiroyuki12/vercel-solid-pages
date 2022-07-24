@@ -21,11 +21,11 @@ const QiitaPage: Component = () => {
   createEffect(() => {
     if(data() == null) {
       //setError("Probably Rate limit exceeded");
-      handleClick();
+      handleClick();   // if rate limit show Rate limit exceeded
     }
-    else {
-      setError("");
-    }
+    //else {
+    //  setError("");
+    //}
   });
 
   // 一番下に到達したら 次ページに更新
