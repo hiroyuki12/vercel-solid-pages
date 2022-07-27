@@ -110,10 +110,7 @@ const QiitaPage: Component = () => {
       <font color="red"><b>{error}</b></font>
       <h1>Qiita Page</h1>
       <p>
-        <a className="QiitaApp-link" href="https://mbp.hatenablog.com/entry/2022/05/16/221120" target="_blank">VercelでSolidJS</a>
-      </p>
-      <p>
-        <a className="QiitaApp-link" href="https://mbp.hatenablog.com/entry/2021/07/15/214300" target="_blank">ReactでQiita APIから記事情報を取得して表示</a>
+        <a className="QiitaApp-link" href="https://mbp.hatenablog.com/entry/2022/05/16/221120" target="_blank">SolidJSでQiitaAPIから記事情報を取得して表示 Vercel</a>
       </p>
       <button onClick={() => onNextPage()}>next page</button>
       <button onClick={() => onPrevPage()}>prev page</button>
