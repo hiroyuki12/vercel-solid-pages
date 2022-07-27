@@ -5,13 +5,33 @@
 
 .QiitaApp-header {
   background-color: #282c34;
-  color: white;
+  color: orange;
 }
 
 .QiitaApp-link {
-  color: #61dafb;
+  color: white;
 }
 
 a {
   text-decoration: none;
+}
+
+.card-container{
+  display: flex;
+  height: 34px;
+}
+
+.card-text a{
+  color: white;
+  font-size: 14px;
+  line-height: 1.2em;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.card-text2{
+  font-size: 11px;
 }

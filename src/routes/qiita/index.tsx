@@ -115,7 +115,6 @@ const QiitaPage: Component = () => {
       <p>
         <a className="QiitaApp-link" href="https://mbp.hatenablog.com/entry/2021/07/15/214300" target="_blank">ReactでQiita APIから記事情報を取得して表示</a>
       </p>
-      <input type="number" placeholder="Enter Skip Number" ref={input} />
       <button onClick={() => onNextPage()}>next page</button>
       <button onClick={() => onPrevPage()}>prev page</button>
       <button onClick={() => refetch()}>refetch</button>
@@ -129,8 +128,14 @@ const QiitaPage: Component = () => {
           <For each={data()}>
             {(qiita) => (
               <li>
-                  <img src={qiita.user.profile_image_url} width="50" height="50" loading="lazy" />
-                  <a className="QiitaApp-link" href={qiita.url} target="_blank">{qiita.title}</a> {moment(qiita.created_at).fromNow()}
+	          <div class="card-container">
+                    <img src={qiita.user.profile_image_url} width="50" height="50" loading="lazy" />
+		    <div class="card-text">
+                      <a className="QiitaApp-link" href={qiita.url} target="_blank">{qiita.title}</a>		      <div class="card-text2">
+                        <p>{moment(qiita.created_at).fromNow()}</p>
+                      </div>
+		    </div>
+	          </div>
               </li>
             )}
           </For>
