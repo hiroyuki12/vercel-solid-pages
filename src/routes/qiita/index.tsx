@@ -104,6 +104,15 @@ const QiitaPage: Component = () => {
     setTag("react");
   };
 
+  const renderTag = (list) => {
+    const tags = list.map((item, index) => {
+      return (
+        <>{item.name}, </>
+      );
+    });
+    return tags;
+  }
+
   return (
     <>
     <header className="QiitaApp-header">
@@ -130,7 +139,7 @@ const QiitaPage: Component = () => {
 		    <div class="card-text">
                       <a className="QiitaApp-link" href={item.url} target="_blank">{item.title}</a>		      <div class="card-text2">
                         <p>{moment(item.created_at).fromNow()}
-			   / {item.tags[0].name} / {item.likes_count}likes / {item.user.items_count}posts</p>
+			   / {renderTag(item.tags)} / {item.likes_count}likes / {item.user.items_count}posts</p>
                       </div>
 		    </div>
 	          </div>
