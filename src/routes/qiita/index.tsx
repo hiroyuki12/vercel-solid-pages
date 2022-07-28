@@ -123,13 +123,14 @@ const QiitaPage: Component = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <ul>
           <For each={data()}>
-            {(qiita) => (
+            {(item) => (
               <li>
 	          <div class="card-container">
-                    <img src={qiita.user.profile_image_url} width="50" height="50" loading="lazy" />
+                    <img src={item.user.profile_image_url} width="50" height="50" loading="lazy" />
 		    <div class="card-text">
-                      <a className="QiitaApp-link" href={qiita.url} target="_blank">{qiita.title}</a>		      <div class="card-text2">
-                        <p>{moment(qiita.created_at).fromNow()}</p>
+                      <a className="QiitaApp-link" href={item.url} target="_blank">{item.title}</a>		      <div class="card-text2">
+                        <p>{moment(item.created_at).fromNow()}
+			   / {item.tags[0].name} / {item.likes_count}likes / {item.user.items_count}posts</p>
                       </div>
 		    </div>
 	          </div>
