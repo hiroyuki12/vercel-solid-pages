@@ -34,4 +34,9 @@ a {
 
 .card-text2{
   font-size: 11px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
