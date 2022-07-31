@@ -52,10 +52,17 @@ const QiitaPage: Component = () => {
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const tagButtonClick = (target) => {
+    setTag(target);
+    handleClick();
+  };
+
   const handleClick = () => {
     const limit = 10;
     //const url = `https://qiita.com/api/v2/tags/${tag}/items?page=${page}&per_page=${limit}`;
-    const url = `https://qiita.com/api/v2/tags/react/items`;
+    //const url = `https://qiita.com/api/v2/tags/react/items`;
+    //const url = `https://qiita.com/api/v2/tags/${tag}/items`;
+    const url = `https://qiita.com/api/v2/tags/${tag}/items?page=${page}`;
     //document.title = `page: ${page()}, tag: ${tag()}`;
 
     const headers = {}
@@ -97,12 +104,6 @@ const QiitaPage: Component = () => {
     }*/
     setPage((prevCount) => prevCount - 1);
   };
-  const onTagSwift= () => {
-    setTag("swift");
-  };
-  const onTagReact= () => {
-    setTag("react");
-  };
 
   const renderTag = (list) => {
     const tags = list.map((item, index) => {
@@ -119,13 +120,16 @@ const QiitaPage: Component = () => {
       <font color="red"><b>{error}</b></font>
       <h1>Qiita Page</h1>
       <p>
-        <a className="QiitaApp-link" href="https://mbp.hatenablog.com/entry/2022/05/16/221120" target="_blank">SolidJSでQiitaAPIから記事情報を取得して表示 Vercel</a>
+        <a className="QiitaApp-link" href="https://mbp.hatenablog.com/entry/2022/05/16/221120" target="_blank">SolidJSでQiitaAPIから記事情報を取得して表示(vercel-solid-pages)</a>
       </p>
+      <button onClick={() => tagButtonClick("react")}>React</button>
+      <button onClick={() => tagButtonClick("next.js")}>Next.js</button>
       <button onClick={() => onNextPage()}>next page</button>
       <button onClick={() => onPrevPage()}>prev page</button>
       <button onClick={() => refetch()}>refetch</button>
+      <button onClick={() => refetch2()}>refetch2</button>
       page: {page},
-      tag: {tag},
+      {tag}
       {data.loading && "Loading..."}
       {data.error && "error"}
 
