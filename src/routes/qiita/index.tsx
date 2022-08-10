@@ -13,7 +13,7 @@ const fetchData2 = async(tag: string) =>
 const QiitaPage: Component = () => {
   const [postsList, setPostsList] = createSignal([]);
   const [page, setPage] = createSignal(1);
-  const [tag, setTag] = createSignal("react");
+  const [tag, setTag] = createSignal("React");
   const [error, setError] = createSignal("");
   const [data, { refetch }] = createResource<Qiita[], number>(page, fetchData);
   const [data2, { refetch2 }] = createResource<Qiita[], string>(tag, fetchData2);
@@ -151,6 +151,7 @@ const QiitaPage: Component = () => {
             )}
           </For>
         </ul>
+	<div className="QiitaApp-footer">{tag} Page {page}/20posts</div>
       </Suspense>
     </header>
     </>
