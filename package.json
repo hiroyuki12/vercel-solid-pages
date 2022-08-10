@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "moment": "^2.29.3"
+    "moment": "^2.29.3",
+    "vite-plugin-pwa": "^0.12.3"
   }
 }
