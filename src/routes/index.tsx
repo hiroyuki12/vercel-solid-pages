@@ -20,11 +20,6 @@ export default function Home() {
         </a>
       </p>
       <p>
-        <a href="https://mbp.hatenablog.com/entry/2022/05/16/221120" target="_blank">
-          VercelでSolidJS 
-        </a>
-      </p>
-      <p>
         <a href="qiita">
            Qiita Page(API)
         </a>
