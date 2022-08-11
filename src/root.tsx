@@ -9,7 +9,7 @@ export default function Root() {
       <head>
         <meta charset="utf-8" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icon.png">
+        <link rel="apple-touch-icon" href="/icon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
