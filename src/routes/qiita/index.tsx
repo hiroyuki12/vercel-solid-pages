@@ -8,7 +8,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime);
 
 const fetchData = async(page: number) =>
-  (await fetch(`https://qiita.com/api/v2/tags/react/items?page=${page}`)).json();
+  (await fetch(`https://qiita.com/api/v2/tags/react/items?page=${page}&per_page=100`)).json();
 //const fetchData2 = async(tag: string) =>
 //  (await fetch(`https://qiita.com/api/v2/tags/${tag}/items?page=1`)).json();
 
@@ -132,8 +132,8 @@ const QiitaPage: Component = () => {
       page:<button onClick={() => pageButtonClick("1")}>__1__</button>
       ___:<button onClick={() => pageButtonClick("20")}>__20__</button>
       ___:<button onClick={() => pageButtonClick("50")}>__50__</button>
-      ___:<button onClick={() => pageButtonClick("90")}>__90__</button>
-      page: {page()}/20posts,
+      ___:<button onClick={() => pageButtonClick("100")}>__100__</button>
+      page: {page()}/100posts,
       {data.loading && "Loading..."}
       {data.error && "error"}
 
@@ -155,7 +155,7 @@ const QiitaPage: Component = () => {
             )}
           </For>
         </ul>
-	<div className="QiitaApp-footer">{tag} Page {page}/20posts</div>
+	<div className="QiitaApp-footer">{tag} Page {page}/100posts</div>
       </Suspense>
     </header>
     </>
