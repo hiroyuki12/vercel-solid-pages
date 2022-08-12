@@ -91,7 +91,8 @@ const QiitaPage: Component = () => {
     //if (!input.value.trim()) return;
     //if (isNaN(Number(input.value))) return;
     //setPage(Number(input.value));
-    setPage((prevCount) => prevCount + 1);
+    //setPage((prevCount) => prevCount + 1);
+    setPage(page() + 1);
     //handleClick();
   };
   const onPrevPage= () => {
@@ -102,7 +103,8 @@ const QiitaPage: Component = () => {
     /*if($page() < 2) {
       return;
     }*/
-    setPage((prevCount) => prevCount - 1);
+    //setPage((prevCount) => prevCount - 1);
+    setPage(page() - 1);
   };
 
   const renderTag = (list) => {
@@ -128,7 +130,7 @@ const QiitaPage: Component = () => {
       <button onClick={() => onPrevPage()}>prev page</button>
       <button onClick={() => refetch()}>refetch</button>
       <button onClick={() => refetch2()}>refetch2</button>
-      page: {page},
+      page: {page()},
       {tag}
       {data.loading && "Loading..."}
       {data.error && "error"}
