@@ -2,8 +2,10 @@ import type { Component } from "solid-js";
 import { createResource, For, createSignal, Suspense, createEffect } from "solid-js";
 import { Qiita } from "./qiita-types";
 import lodash from "lodash";
-import moment from "moment";
 import "./QiitaApp.css";
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
 
 const fetchData = async(page: number) =>
   (await fetch(`https://qiita.com/api/v2/tags/react/items?page=${page}`)).json();
@@ -144,7 +146,7 @@ const QiitaPage: Component = () => {
                     <img src={item.user.profile_image_url} width="50" height="50" loading="lazy" />
 		    <div class="card-text">
                       <a className="QiitaApp-link" href={item.url} target="_blank">{item.title}</a>		      <div class="card-text2">
-                        <p>{moment(item.created_at).fromNow()}
+                        <p>{dayjs(item.created_at).fromNow(true)}
 			   / {renderTag(item.tags)} / {item.likes_count}likes / {item.user.items_count}posts</p>
                       </div>
 		    </div>
