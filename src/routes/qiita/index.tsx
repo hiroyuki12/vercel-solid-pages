@@ -39,7 +39,8 @@ const QiitaPage: Component = () => {
 
     // 一番下に到達した時の処理
     //if(message !== "loading...") {
-      setPage((prevCount) => prevCount + 1);
+      //setPage((prevCount) => prevCount + 1);
+      setPage(page() + 1);
     //}
 
   }, 500);
@@ -54,6 +55,12 @@ const QiitaPage: Component = () => {
 
   const tagButtonClick = (target) => {
     setTag(target);
+    handleClick();
+  };
+
+  const pageButtonClick = (target) => {
+    const tmp = parseInt(target, 10);
+    setPage(tmp);
     handleClick();
   };
 
@@ -88,22 +95,9 @@ const QiitaPage: Component = () => {
   let input!: HTMLInputElement;
 
   const onNextPage= () => {
-    //if (!input.value.trim()) return;
-    //if (isNaN(Number(input.value))) return;
-    //setPage(Number(input.value));
-    //setPage((prevCount) => prevCount + 1);
     setPage(page() + 1);
-    //handleClick();
   };
   const onPrevPage= () => {
-    //document.title = `${page()}`;
-    //if (!input.value.trim()) return;
-    //if (isNaN(Number(input.value))) return;
-    //setPage(Number(input.value));
-    /*if($page() < 2) {
-      return;
-    }*/
-    //setPage((prevCount) => prevCount - 1);
     setPage(page() - 1);
   };
 
@@ -130,8 +124,12 @@ const QiitaPage: Component = () => {
       <button onClick={() => onPrevPage()}>prev page</button>
       <button onClick={() => refetch()}>refetch</button>
       <button onClick={() => refetch2()}>refetch2</button>
-      page: {page()},
-      {tag}
+      {tag}<br />
+      page:<button onClick={() => pageButtonClick("1")}>__1__</button>
+      ___:<button onClick={() => pageButtonClick("20")}>__20__</button>
+      ___:<button onClick={() => pageButtonClick("50")}>__50__</button>
+      ___:<button onClick={() => pageButtonClick("90")}>__90__</button>
+      page: {page()}/20posts,
       {data.loading && "Loading..."}
       {data.error && "error"}
 
