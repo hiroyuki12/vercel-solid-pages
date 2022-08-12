@@ -7,21 +7,21 @@ import "./QiitaApp.css";
 
 const fetchData = async(page: number) =>
   (await fetch(`https://qiita.com/api/v2/tags/react/items?page=${page}`)).json();
-const fetchData2 = async(tag: string) =>
-  (await fetch(`https://qiita.com/api/v2/tags/${tag}/items?page=1`)).json();
+//const fetchData2 = async(tag: string) =>
+//  (await fetch(`https://qiita.com/api/v2/tags/${tag}/items?page=1`)).json();
 
 const QiitaPage: Component = () => {
-  const [postsList, setPostsList] = createSignal([]);
+  //const [postsList, setPostsList] = createSignal([]);
   const [page, setPage] = createSignal(1);
   const [tag, setTag] = createSignal("React");
   const [error, setError] = createSignal("");
   const [data, { refetch }] = createResource<Qiita[], number>(page, fetchData);
-  const [data2, { refetch2 }] = createResource<Qiita[], string>(tag, fetchData2);
+  //const [data2, { refetch2 }] = createResource<Qiita[], string>(tag, fetchData2);
 
   createEffect(() => {
     if(data() == null) {
       //setError("Probably Rate limit exceeded");
-      handleClick();   // if rate limit show Rate limit exceeded
+      //handleClick();   // if rate limit show Rate limit exceeded
     }
     //else {
     //  setError("");
@@ -55,15 +55,16 @@ const QiitaPage: Component = () => {
 
   const tagButtonClick = (target) => {
     setTag(target);
-    handleClick();
+    //handleClick();
   };
 
   const pageButtonClick = (target) => {
     const tmp = parseInt(target, 10);
     setPage(tmp);
-    handleClick();
+    //handleClick();
   };
 
+  /*
   const handleClick = () => {
     const limit = 10;
     //const url = `https://qiita.com/api/v2/tags/${tag}/items?page=${page}&per_page=${limit}`;
@@ -91,8 +92,9 @@ const QiitaPage: Component = () => {
         }
       })
   }
+  */
 
-  let input!: HTMLInputElement;
+  //let input!: HTMLInputElement;
 
   const onNextPage= () => {
     setPage(page() + 1);
