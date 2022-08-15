@@ -25,3 +25,9 @@ export default function Root() {
     </html>
   );
 }
+
+export const links = () => {
+  return [
+    { rel: "manifest", href: '/manifest.json' },
+  ]
+}
