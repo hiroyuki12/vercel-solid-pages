@@ -56,6 +56,7 @@ const QiitaPage: Component = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const tagButtonClick = (target) => {
+    setPage(1);
     setTag(target);
     //handleClick();
   };
